@@ -5,7 +5,7 @@ st.title("Illinois Building Inventory")
 st.header("Construction Year and Building Size")
 scatter=(alt.Chart(url).mark_point(opacity=0.4).encode(x=alt.X("Year Constructed:Q",title="Construction year", scale=alt.Scale(zero=False),),y=alt.Y("Square Footage:Q",title="Square footage(log scale)",scale=alt.Scale(type="log"),),).transform_filter("datum['Year Constructed']>0 && datum['Square Footage']>0"))
 dropdown=alt.binding_select(options=["University of Illinois","Department of Corrections", "Department of Natural Resources","Southern Illinois University"],name="Agency: ")
-agency=alt.selection_point(fields=["Agency Name"],bind=dropdown)
+agency=alt.selection_point(fields=["Agency Name"],bind=dropdown,value=[{"Agency Name": "University of Illinois"}],)
 st.altair_chart(scatter.add_params(agency).transform_filter(agency))
 
 st.write("This scatter plot displays how the building size varies by construction year for the "
