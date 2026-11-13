@@ -7,7 +7,6 @@ scatter=(alt.Chart(url).mark_point(opacity=0.4).encode(x=alt.X("Year Constructed
 dropdown=alt.binding_select(options=["University of Illinois","Department of Corrections", "Department of Natural Resources","Southern Illinois University"],name="Agency: ")
 agency=alt.selection_point(fields=["Agency Name"],bind=dropdown)
 st.altair_chart(scatter.add_params(agency).transform_filter(agency))
-st.header("Total Building Square Footage by Agency")
 
 st.write("This scatter plot displays how the building size varies by construction year for the "
     "agency chosen from the drop-down list. Each point is a building. The points are "
